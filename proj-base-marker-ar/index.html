@@ -1,20 +1,25 @@
 <html>
-<script src="https://aframe.io/releases/1.0.0/aframe.min.js"></script>
-<script src="./resources/animation-mixer.js"></script>
-<script src="https://unpkg.com/aframe-animation-component@5.1.2/dist/aframe-animation-component.min.js"></script>
-<!-- we import arjs version without NFT but with marker + location based support -->
-<script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
-<body style="margin : 0px; overflow: hidden;">
+  <head>
+    <script src="https://aframe.io/releases/1.0.0/aframe.min.js"></script>
+    <script src="https://unpkg.com/aframe-animation-mixer@6.0.1/dist/aframe-animation-mixer.min.js"></script>
+    <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
+  </head>
+  <body style="margin: 0px; overflow: hidden;">
     <a-scene embedded arjs>
-        <a-marker preset="hiro">
-            <!-- Adicionando uma esfera para ser exibida -->
-            <a-sphere 
-                position="0 0.5 0" 
-                radius="0.5" 
-                color="blue">
-            </a-sphere>
-        </a-marker>
-        <a-entity camera></a-entity>
+      <!-- marcador padrão Hiro -->
+      <a-marker preset="hiro">
+        <!-- modelo 3D no lugar da esfera -->
+        <a-entity 
+          gltf-model="url(https://cdn.jsdelivr.net/gh/KhronosGroup/glTF-Sample-Models@master/2.0/Fox/glTF/Fox.gltf)" 
+          scale="0.02 0.02 0.02" 
+          position="0 0 0"
+          rotation="45 360 45"
+          animation-mixer>
+        </a-entity>
+      </a-marker>
+
+      <!-- câmera AR -->
+      <a-entity camera></a-entity>
     </a-scene>
-</body>	
+  </body>
 </html>
